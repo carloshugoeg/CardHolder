@@ -35,8 +35,7 @@ namespace CardHolder
         }
         public void AgregarCliente(string nombre, string dpi, string numeroCuenta, List<Cliente> listaClientes)
         {
-            Cliente nuevoCliente = new Cliente(nombre, dpi, numeroCuenta);
-            listaClientes.Add(nuevoCliente);
+            //este metodo mejor creanlo en el main usando la lista que esta en el main
         }
         public bool EliminarCliente(string dPI, List<Cliente> listaClientes)
         {
@@ -47,6 +46,7 @@ namespace CardHolder
                 return true;
             }
             return false;
+            //este metodo mejor creanlo en el main usando la lista que esta en el main
         }
         public int BuscarCliente(List<Cliente> clientes, string dPI)
         {
@@ -62,6 +62,7 @@ namespace CardHolder
                 Console.WriteLine("Cliente no encontrado.");
                 return -1;
             }
+            //este metodo mejor creanlo en el main usando la lista que esta en el main
         }
     }
 }

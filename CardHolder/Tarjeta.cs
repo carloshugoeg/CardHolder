@@ -29,6 +29,7 @@ namespace CardHolder
         {
             Console.WriteLine("-----TARJETA-----");
             Console.WriteLine("\nNumero Tarjeta: " + NumeroTarjeta);
+            //continuar aqui porfavor
 
         }
 
@@ -56,7 +57,7 @@ namespace CardHolder
             } while (indice < 0);
             titularTarjeta = clienteList[indice];    
             Console.Write("Ingrese CVV: ");
-            cVV = Convert.ToInt32(Console.ReadLine());
+            cVV = PedirInt();
             if (!esCredito)
             {
                 Console.Write("¿La tarjeta tiene seguro? (y/n): ");
@@ -121,6 +122,43 @@ namespace CardHolder
                         Console.Write("Ingrese el monto: Q.");
                         precio = decimal.Parse(Console.ReadLine());
                     return precio;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("INPUT INVALIDO");
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Tarjeta-----");
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine("EL numero es demasiado grande");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Tarjeta-----");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("ERROR");
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Tarjeta-----");
+                }
+            } while (true);
+        }
+        int PedirInt()
+        {
+            do
+            {
+                try
+                {
+
+                    int monto;
+                    Console.Write("Ingrese el monto: Q.");
+                    monto = int.Parse(Console.ReadLine());
+                    return monto;
                 }
                 catch (FormatException ex)
                 {
