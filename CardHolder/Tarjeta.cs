@@ -120,11 +120,6 @@ namespace CardHolder
                         decimal precio;
                         Console.Write("Ingrese el monto: Q.");
                         precio = decimal.Parse(Console.ReadLine());
-                        if (precio == 0 || precio == null)
-                        {
-                            Console.WriteLine("Valor no puede ser 0");
-                            Console.ReadLine();
-                        }
                     return precio;
                 }
                 catch (FormatException ex)
@@ -133,14 +128,14 @@ namespace CardHolder
                     Console.WriteLine(ex.Message);
                     Console.ReadLine();
                     Console.Clear();
-                    Console.WriteLine("-----Nueva Venta-----");
+                    Console.WriteLine("-----Nueva Tarjeta-----");
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
                     Console.WriteLine("EL numero es demasiado grande");
                     Console.ReadLine();
                     Console.Clear();
-                    Console.WriteLine("-----Nueva Venta-----");
+                    Console.WriteLine("-----Nueva Tarjeta-----");
                 }
                 catch (Exception ex)
                 {
@@ -148,7 +143,7 @@ namespace CardHolder
                     Console.WriteLine(ex.Message);
                     Console.ReadLine();
                     Console.Clear();
-                    Console.WriteLine("-----Nueva Venta-----");
+                    Console.WriteLine("-----Nueva Tarjeta-----");
                 }
             } while (true);
         }
