@@ -29,8 +29,9 @@ namespace CardHolder
         {
             Console.WriteLine("-----TARJETA-----");
             Console.WriteLine("\nNumero Tarjeta: " + NumeroTarjeta);
-            //continuar aqui porfavor
-
+            Console.WriteLine("\nFecha de vencimiento: " + FechaVencimiento);
+            Console.WriteLine("\nTitular: " + TitularTarjeta); //ACÁ SE DEBERÍA LLAMAR AL NOMBRE
+            Console.WriteLine("\nCVV: " + CVV);
         }
 
         public void AgregarInformacion(List<Tarjeta> listaTarjetas, List<Cliente> clienteList, bool esCredito)
