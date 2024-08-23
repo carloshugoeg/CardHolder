@@ -112,10 +112,40 @@ void AgregarCliente(List<Cliente> listaClientes)
     Console.WriteLine(); Console.ResetColor();
     Console.Write("Nombre: ");
     string nombreCliente = Console.ReadLine();
-    Console.Write("DPI: ");
-    string dpi = Console.ReadLine();
-    Console.Write("Numero de cuenta: ");
-    string numeroCuenta = Console.ReadLine();
+    string dpi;
+    do
+    {
+        Console.Write("Ingrese Número de DPI: ");
+        dpi = Console.ReadLine();
+        Int128 numeroValidacion;
+        if (Int128.TryParse(dpi, out numeroValidacion))
+        {
+            break;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("El DPI esta en formato incorrecto\n\n");
+            Console.ResetColor();
+        }
+    } while (true);
+    string numeroCuenta;
+    do
+    {
+        Console.Write("Ingrese Número de Cuenta: ");
+        numeroCuenta = Console.ReadLine();
+        int numeroValidacion;
+        if (int.TryParse(numeroCuenta, out numeroValidacion))
+        {
+            break;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("El numero tarjeta esta en formato incorrecto\n\n");
+            Console.ResetColor();
+        }
+    } while (true);
 
     Cliente nuevoCliente = new Cliente(nombreCliente, dpi, numeroCuenta);
     listaClientes.Add(nuevoCliente);

@@ -30,7 +30,7 @@ namespace CardHolder
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("Numero Tarjeta: " + NumeroTarjeta);
             Console.WriteLine("Fecha de vencimiento: " + FechaVencimiento);
-            Console.WriteLine("Titular: " + TitularTarjeta); //ACÁ SE DEBERÍA LLAMAR AL NOMBRE
+            Console.WriteLine("Titular: " + TitularTarjeta.Nombre); //ACÁ SE DEBERÍA LLAMAR AL NOMBRE
             Console.WriteLine("CVV: " + CVV);
         }
 
@@ -40,8 +40,22 @@ namespace CardHolder
             string fechaVencimiento;
             int cVV;
             bool tieneSeguro;
-            Console.Write("Ingrese Número de Tarjeta: ");
-            numeroTarjeta = Console.ReadLine();
+            do
+            {
+                Console.Write("Ingrese Número de Tarjeta: ");
+                numeroTarjeta = Console.ReadLine();
+                int numeroValidacion;
+                if (int.TryParse(numeroTarjeta, out numeroValidacion))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("El DPI esta en formato incorrecto\n\n");
+                    Console.ResetColor();
+                }
+            } while (true);
 
             Console.Write("Ingrese Fecha de Vencimiento (MM/YY): ");
             fechaVencimiento = Console.ReadLine();
@@ -72,16 +86,17 @@ namespace CardHolder
                 listaTarjetas.Add(NuevaTarjetaDebito);
                 return;
             }
-            Console.WriteLine("Límite de Crédito ");
+            Console.Write("Límite de Crédito: Q");
             decimal limiteCredito = PedirPrecio();
 
-            Console.WriteLine("Saldo Utilizado");
+            Console.Write("Saldo Utilizado: Q");
             decimal saldoUtilizado = PedirPrecio();
 
-            Console.WriteLine("Ingrese Interes (en decimal)");
+            Console.Write("Ingrese Interes (en decimal): ");
             decimal interes = PedirPrecio();
 
             Console.WriteLine("Ingrese deuda actual: (en caso que no aplique. coloque 0)");
+            Console.Write("Q.");
             decimal deuda = PedirPrecio();
 
             listaTarjetas.Add(new TarjetaCredito(numeroTarjeta, fechaVencimiento, titularTarjeta, cVV, limiteCredito, interes, deuda, saldoUtilizado));
@@ -119,10 +134,8 @@ namespace CardHolder
             {
                 try
                 {
-
-                        decimal precio;
-                        Console.Write("Ingrese el monto: Q.");
-                        precio = decimal.Parse(Console.ReadLine());
+                    decimal precio;
+                    precio = decimal.Parse(Console.ReadLine());
                     return precio;
                 }
                 catch (FormatException ex)
@@ -156,9 +169,7 @@ namespace CardHolder
             {
                 try
                 {
-
                     int monto;
-                    Console.Write("Ingrese el monto: Q.");
                     monto = int.Parse(Console.ReadLine());
                     return monto;
                 }

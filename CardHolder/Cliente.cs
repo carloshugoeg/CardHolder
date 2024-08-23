@@ -17,7 +17,7 @@ namespace CardHolder
             NumeroCuenta = numeroCuenta;
         }
 
-        private string Nombre { get; set; }
+        public string Nombre { get; set; }
         private string DPI { get; set; }
         private string NumeroCuenta { get; set; }
         private List<Tarjeta> TarjetasCliente { get; set; } //se crea un metodo publico agregar tarjetas que reciba una List
