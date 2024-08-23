@@ -25,52 +25,41 @@ do
         switch (opcion)
         {
             case 1:
-                Console.Clear();
                 AgregarCliente(listaClientes);
                 break;
             case 2: 
                 if(listaClientes.Count == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
+                    MensajeNoHayUsuarios(); break;
                 }
-                Console.Clear();
                 AgregarTarjeta(listaTarjetas);
                 break;
             case 3:
                 if (listaClientes.Count == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
+                    MensajeNoHayUsuarios(); break;
                 }
-                Console.Clear();
                 MostrarClientes(listaClientes);
                 break;
             case 4:
                 if (listaTarjetas.Count == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("Aun no hay tarjetas..."); Console.ReadKey(); Console.Clear(); break;
+                    MensajeNoHayTarjetas(); break;
                 }
-                Console.Clear();
                 MostrarTarjetas(listaTarjetas);
                 break;
             case 5:
                 if (listaClientes.Count == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
+                    MensajeNoHayUsuarios(); break;
                 }
-                Console.Clear();
                 BuscarUsuario(listaClientes);
                 break;
             case 6:
                 if (listaTarjetas.Count == 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("Aun no hay tarjetas..."); Console.ReadKey(); Console.Clear(); break;
+                    MensajeNoHayTarjetas(); break;
                 }
-                Console.Clear();
                 BuscarTarjeta(listaTarjetas);
                 break;
             case 7:
@@ -102,8 +91,20 @@ void MensajeContinuar()
     Console.ReadKey(); Console.Clear(); Console.ResetColor();
 }
 
+void MensajeNoHayUsuarios()
+{
+    Console.ForegroundColor = ConsoleColor.DarkGray;
+    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear();
+}
+
+void MensajeNoHayTarjetas()
+{
+    Console.ForegroundColor = ConsoleColor.DarkGray;
+    Console.Write("Aun no hay tarjetas..."); Console.ReadKey(); Console.Clear();
+}
 void AgregarCliente(List<Cliente> listaClientes)
 {
+    Console.Clear();
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("------------------------");
     Console.WriteLine("     Agregar Usuario");
@@ -126,6 +127,7 @@ void AgregarCliente(List<Cliente> listaClientes)
 
 void MostrarClientes(List<Cliente> listaClientes)
 {
+    Console.Clear();
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("------------------------");
     Console.WriteLine("    Mostrar Usuarios");
@@ -143,6 +145,7 @@ void MostrarClientes(List<Cliente> listaClientes)
 
 void BuscarUsuario(List<Cliente> clientes)
 {
+    Console.Clear();
     Cliente cliente = new Cliente("", "", "");
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("------------------------");
@@ -163,6 +166,7 @@ void BuscarUsuario(List<Cliente> clientes)
 }
 void AgregarTarjeta(List<Tarjeta> listaTarjetas)
 {
+    Console.Clear();
     int opcionTarjeta = 0;
     Tarjeta tarjeta = new Tarjeta("", "", null, 0);
     do
@@ -221,6 +225,7 @@ void AgregarTarjeta(List<Tarjeta> listaTarjetas)
 
 void MostrarTarjetas(List<Tarjeta> listaTarjetas)
 {
+    Console.Clear();
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("-----------------------------------------");
     Console.WriteLine("            Mostrar Tarjetas");  
@@ -237,6 +242,7 @@ void MostrarTarjetas(List<Tarjeta> listaTarjetas)
 
 void BuscarTarjeta(List<Tarjeta> listaTarjetas)
 {
+    Console.Clear();
     Tarjeta tarjeta = new Tarjeta("", "", null, 0);
     tarjeta.BuscarInformacion(listaTarjetas);
     MensajeContinuar();

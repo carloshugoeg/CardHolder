@@ -92,7 +92,7 @@ namespace CardHolder
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("            Buscar Tarjetas");
-            Console.WriteLine("\n-----------------------------------------");
+            Console.WriteLine("-----------------------------------------\n");
             Console.ResetColor();
             Console.Write("Ingresa el número de tarjeta: ");
             string NumeroTarjeta = Console.ReadLine();
