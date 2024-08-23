@@ -229,7 +229,7 @@ void MostrarTarjetas(List<Tarjeta> listaTarjetas)
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("-----------------------------------------");
     Console.WriteLine("            Mostrar Tarjetas");  
-    Console.WriteLine("\n-----------------------------------------");
+    Console.WriteLine("-----------------------------------------");
     Console.ResetColor();
 
     foreach(var tarjeta in listaTarjetas)
