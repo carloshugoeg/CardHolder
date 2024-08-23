@@ -10,7 +10,6 @@ namespace CardHolder
     
     internal class Cliente
     {
-        static List<Cliente> listaClientes = new List<Cliente>();
         public Cliente(string nombre, string dPI, string numeroCuenta)
         {
             Nombre = nombre;
@@ -34,12 +33,12 @@ namespace CardHolder
         {
             TarjetasCliente.AddRange(tarjetas);
         }
-        public void AgregarCliente(string nombre, string dpi, string numeroCuenta)
+        public void AgregarCliente(string nombre, string dpi, string numeroCuenta, List<Cliente> listaClientes)
         {
             Cliente nuevoCliente = new Cliente(nombre, dpi, numeroCuenta);
             listaClientes.Add(nuevoCliente);
         }
-        public bool EliminarCliente(string dPI)
+        public bool EliminarCliente(string dPI, List<Cliente> listaClientes)
         {
             int indice = listaClientes.FindIndex(c => c.DPI == dPI);
             if (indice != -1)
@@ -49,18 +48,19 @@ namespace CardHolder
             }
             return false;
         }
-        public void BuscarCliente(string dPI)
+        public int BuscarCliente(List<Cliente> clientes, string dPI)
         {
-            int indice = listaClientes.FindIndex(c => c.DPI == dPI);
+            int indice = clientes.FindIndex(c => c.DPI == dPI);
 
             if (indice != -1)
             {
-                Console.WriteLine($"Cliente encontrado en el índice {indice}:");
-                listaClientes[indice].MostrarInfo();
+                Console.WriteLine($"Cliente encontrado");
+                return indice;
             }
             else
             {
                 Console.WriteLine("Cliente no encontrado.");
+                return -1;
             }
         }
     }
