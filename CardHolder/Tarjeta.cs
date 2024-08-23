@@ -33,7 +33,7 @@ namespace CardHolder
         
         public void AgregarInformacionDebito()
         {
-                        Console.Write("Ingrese Número de Tarjeta: ");
+            Console.Write("Ingrese Número de Tarjeta: ");
             string numeroTarjeta = Console.ReadLine();
 
             Console.Write("Ingrese Fecha de Vencimiento (MM/YY): ");
@@ -60,7 +60,7 @@ namespace CardHolder
             string nombreTitular = Console.ReadLine();
 
             Console.Write("Ingrese CVV: ");
-            int cVV = Convert.ToInt32(Console.ReadLine());
+            int NuevoCvv = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Ingrese Límite de Crédito: ");
             double limiteCredito = Convert.ToDouble(Console.ReadLine());
@@ -68,15 +68,15 @@ namespace CardHolder
             Console.Write("Ingrese Saldo Utilizado: ");
             double saldoUtilizado = Convert.ToDouble(Console.ReadLine());
 
-            TarjetaCredito NuevaTarjetaCredito = new TarjetaCredito(numeroTarjeta, fechaVencimiento, titularTarjeta, cVV, limiteCredito, saldoUtilizado);
+            TarjetaCredito NuevaTarjetaCredito = new TarjetaCredito(numeroTarjeta, fechaVencimiento, titularTarjeta, NuevoCvv, limiteCredito, saldoUtilizado);
             listaTarjetas.Add(NuevaTarjetaCredito);
         }        
         public void BuscarInformacion()
         {
             bool Encontrado = false;
-Console.Clear();
-Console.WriteLine("------------------------");
-Console.WriteLine("     BUSCAR TARJETA");
+            Console.Clear();
+            Console.WriteLine("------------------------");
+            Console.WriteLine("     BUSCAR TARJETA");
 Console.WriteLine("------------------------\n");
 Console.Write("Número de cuenta: ");
 string NumeroTarjeta = Console.ReadLine();
