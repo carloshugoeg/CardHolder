@@ -27,22 +27,47 @@ do
                 AgregarCliente(listaClientes);
                 break;
             case 2: 
+                if(listaClientes.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
+                }
                 Console.Clear();
                 AgregarTarjeta(listaTarjetas);
                 break;
             case 3:
+                if (listaClientes.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
+                }
                 Console.Clear();
                 MostrarClientes(listaClientes);
                 break;
             case 4:
+                if (listaTarjetas.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("Aun no hay tarjetas..."); Console.ReadKey(); Console.Clear(); break;
+                }
                 Console.Clear();
                 MostrarTarjetas(listaTarjetas);
                 break;
             case 5:
+                if (listaClientes.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
+                }
                 Console.Clear();
                 MensajeContinuar();
                 break;
             case 6:
+                if (listaTarjetas.Count == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("Aun no hay tarjetas..."); Console.ReadKey(); Console.Clear(); break;
+                }
                 Console.Clear();
                 MensajeContinuar();
                 break;
@@ -116,16 +141,60 @@ void MostrarClientes(List<Cliente> listaClientes)
 
 void AgregarTarjeta(List<Tarjeta> listaTarjetas)
 {
+    int opcionTarjeta = 0;
     Tarjeta tarjeta = new Tarjeta("", "", null, 0);
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("------------------------");
-    Console.WriteLine("     Agregar Tarjeta");
-    Console.WriteLine("------------------------");
-    Console.ResetColor();
-    tarjeta.AgregarInformacion(listaTarjetas, listaClientes, esCredito: false);
-    Console.ForegroundColor = ConsoleColor.DarkYellow;
-    Console.WriteLine("Tarjeta agregada con éxito.");
-    MensajeContinuar();
+    do
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("------------------------------------------------------------");
+        Console.WriteLine("                      Agregar Tarjeta");
+        Console.WriteLine("------------------------------------------------------------");
+        Console.ResetColor();
+        Console.WriteLine("¿Qué tipo de tarjeta desea agregar? ");
+        Console.WriteLine("(1: Débito, 2: Crédito, 3: Regresar a menú principal): ");
+        try
+        {
+            opcionTarjeta = Convert.ToInt32(Console.ReadLine());
+            
+            switch(opcionTarjeta)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("------TARJETA DE DÉBITO------");
+                    Console.ResetColor();
+                    tarjeta.AgregarInformacion(listaTarjetas, listaClientes, esCredito: false);
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Tarjeta agregada con éxito.");
+                    MensajeContinuar();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("------TARJETA DE CRÉDITO------");
+                    Console.ResetColor();
+                    tarjeta.AgregarInformacion(listaTarjetas, listaClientes, esCredito: true);
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Tarjeta agregada con éxito.");
+                    MensajeContinuar();
+                    break;
+                case 3:
+                    Console.Clear();
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Esta opción no existe. Intenta de nuevo");
+                    MensajeContinuar();
+                    break;
+            }
+        }
+        catch (FormatException)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("Error de formato. Intenta de nuevo");
+            MensajeContinuar();
+        }
+    } while (opcionTarjeta != 3);
 }
 
 void MostrarTarjetas(List<Tarjeta> listaTarjetas)

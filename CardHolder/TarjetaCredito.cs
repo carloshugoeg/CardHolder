@@ -24,7 +24,7 @@ namespace CardHolder
         {
             base.MostrarInformacion();
             Console.WriteLine("\nTipo tarjeta: CREDITO");
-            Console.WriteLine("\nInteres: " + (Interes*100)+"%");
+            Console.WriteLine("Interes: " + (Interes*100)+"%");
             //aqui siguen
         }
     }

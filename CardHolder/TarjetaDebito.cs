@@ -18,7 +18,7 @@ namespace CardHolder
         {
             base.MostrarInformacion();
             Console.WriteLine("\nTipo tarjeta: DEBITO");
-            if(TieneSeguro) Console.WriteLine("\nTU TARJETA DE DEBITO CUENTA CON SEGURO");
+            if(TieneSeguro) Console.WriteLine("TU TARJETA DE DEBITO CUENTA CON SEGURO");
         }
     }
 }

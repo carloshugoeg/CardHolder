@@ -28,10 +28,10 @@ namespace CardHolder
         public virtual void MostrarInformacion()
         {
             Console.WriteLine("-----TARJETA-----");
-            Console.WriteLine("\nNumero Tarjeta: " + NumeroTarjeta);
-            Console.WriteLine("\nFecha de vencimiento: " + FechaVencimiento);
-            Console.WriteLine("\nTitular: " + TitularTarjeta); //ACÁ SE DEBERÍA LLAMAR AL NOMBRE
-            Console.WriteLine("\nCVV: " + CVV);
+            Console.WriteLine("Numero Tarjeta: " + NumeroTarjeta);
+            Console.WriteLine("Fecha de vencimiento: " + FechaVencimiento);
+            Console.WriteLine("Titular: " + TitularTarjeta); //ACÁ SE DEBERÍA LLAMAR AL NOMBRE
+            Console.WriteLine("CVV: " + CVV);
         }
 
         public void AgregarInformacion(List<Tarjeta> listaTarjetas, List<Cliente> clienteList, bool esCredito)
