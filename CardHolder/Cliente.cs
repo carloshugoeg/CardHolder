@@ -51,18 +51,16 @@ namespace CardHolder
         public int BuscarCliente(List<Cliente> clientes, string dPI)
         {
             int indice = clientes.FindIndex(c => c.DPI == dPI);
-
             if (indice != -1)
             {
-                Console.WriteLine($"Cliente encontrado");
                 return indice;
             }
             else
             {
-                Console.WriteLine("Cliente no encontrado.");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Usuario no encontrado."); Console.ResetColor();
                 return -1;
             }
-            //este metodo mejor creanlo en el main usando la lista que esta en el main
         }
     }
 }

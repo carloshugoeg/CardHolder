@@ -1,4 +1,6 @@
 ﻿using CardHolder;
+using System.Collections.Generic;
+using System.Runtime.Intrinsics.Arm;
 List<Tarjeta> listaTarjetas = new List<Tarjeta>();
 List<Cliente> listaClientes = new List<Cliente>(); //cada metodo que trabaje con tarjetas y/o clientes recibe como atributo la lista, ingresarla cuando declaren los metodos aqui
 int opcion = 0;
@@ -60,7 +62,7 @@ do
                     Console.Write("Aun no hay usuarios..."); Console.ReadKey(); Console.Clear(); break;
                 }
                 Console.Clear();
-                MensajeContinuar();
+                BuscarUsuario(listaClientes);
                 break;
             case 6:
                 if (listaTarjetas.Count == 0)
@@ -69,7 +71,7 @@ do
                     Console.Write("Aun no hay tarjetas..."); Console.ReadKey(); Console.Clear(); break;
                 }
                 Console.Clear();
-                MensajeContinuar();
+                BuscarTarjeta(listaTarjetas);
                 break;
             case 7:
                 Console.Clear();
@@ -118,7 +120,7 @@ void AgregarCliente(List<Cliente> listaClientes)
     listaClientes.Add(nuevoCliente);
 
     Console.ForegroundColor = ConsoleColor.DarkYellow;
-    Console.WriteLine("Cliente agregado con éxito.");
+    Console.WriteLine("\nCliente agregado con éxito.");
     MensajeContinuar();
 }
 
@@ -126,7 +128,7 @@ void MostrarClientes(List<Cliente> listaClientes)
 {
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("------------------------");
-    Console.WriteLine("     Mostrar Clientes");
+    Console.WriteLine("    Mostrar Usuarios");
     Console.WriteLine("------------------------");
     Console.ResetColor();
 
@@ -139,6 +141,26 @@ void MostrarClientes(List<Cliente> listaClientes)
     MensajeContinuar();
 }
 
+void BuscarUsuario(List<Cliente> clientes)
+{
+    Cliente cliente = new Cliente("", "", "");
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine("------------------------");
+    Console.WriteLine("     Buscar Usuarios");
+    Console.WriteLine("------------------------");
+    Console.ResetColor();
+
+    Console.Write("Ingresa el DPI que quieras buscar: ");
+    string dpi = Console.ReadLine();
+
+    int indice = cliente.BuscarCliente(clientes, dpi);
+    Console.WriteLine();
+    if (indice != -1)
+    {
+        clientes[indice].MostrarInfo();
+    }
+    MensajeContinuar();
+}
 void AgregarTarjeta(List<Tarjeta> listaTarjetas)
 {
     int opcionTarjeta = 0;
@@ -165,7 +187,7 @@ void AgregarTarjeta(List<Tarjeta> listaTarjetas)
                     Console.ResetColor();
                     tarjeta.AgregarInformacion(listaTarjetas, listaClientes, esCredito: false);
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("Tarjeta agregada con éxito.");
+                    Console.WriteLine("\nTarjeta agregada con éxito.");
                     MensajeContinuar();
                     break;
                 case 2:
@@ -175,7 +197,7 @@ void AgregarTarjeta(List<Tarjeta> listaTarjetas)
                     Console.ResetColor();
                     tarjeta.AgregarInformacion(listaTarjetas, listaClientes, esCredito: true);
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("Tarjeta agregada con éxito.");
+                    Console.WriteLine("\nTarjeta agregada con éxito.");
                     MensajeContinuar();
                     break;
                 case 3:
@@ -200,9 +222,9 @@ void AgregarTarjeta(List<Tarjeta> listaTarjetas)
 void MostrarTarjetas(List<Tarjeta> listaTarjetas)
 {
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine("------------------------");
-    Console.WriteLine("     Mostrar Tarjetas");
-    Console.WriteLine("------------------------");
+    Console.WriteLine("-----------------------------------------");
+    Console.WriteLine("            Mostrar Tarjetas");  
+    Console.WriteLine("\n-----------------------------------------");
     Console.ResetColor();
 
     foreach(var tarjeta in listaTarjetas)
@@ -210,5 +232,12 @@ void MostrarTarjetas(List<Tarjeta> listaTarjetas)
         tarjeta.MostrarInformacion();
         Console.WriteLine();
     }
+    MensajeContinuar();
+}
+
+void BuscarTarjeta(List<Tarjeta> listaTarjetas)
+{
+    Tarjeta tarjeta = new Tarjeta("", "", null, 0);
+    tarjeta.BuscarInformacion(listaTarjetas);
     MensajeContinuar();
 }

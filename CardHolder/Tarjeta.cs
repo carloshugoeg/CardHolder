@@ -27,7 +27,7 @@ namespace CardHolder
 
         public virtual void MostrarInformacion()
         {
-            Console.WriteLine("-----TARJETA-----");
+            Console.WriteLine("-----------------------------------------");
             Console.WriteLine("Numero Tarjeta: " + NumeroTarjeta);
             Console.WriteLine("Fecha de vencimiento: " + FechaVencimiento);
             Console.WriteLine("Titular: " + TitularTarjeta); //ACÁ SE DEBERÍA LLAMAR AL NOMBRE
@@ -89,18 +89,18 @@ namespace CardHolder
         public void BuscarInformacion(List<Tarjeta> listaTarjetas)
         {
             bool Encontrado = false;
-            Console.Clear();
-            Console.WriteLine("------------------------");
-            Console.WriteLine("     BUSCAR TARJETA");
-            Console.WriteLine("------------------------\n");
-            Console.Write("Número de cuenta: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("            Buscar Tarjetas");
+            Console.WriteLine("\n-----------------------------------------");
+            Console.ResetColor();
+            Console.Write("Ingresa el número de tarjeta: ");
             string NumeroTarjeta = Console.ReadLine();
 
             foreach (var Buscando in listaTarjetas)
             {
                 if (Buscando.NumeroTarjeta == NumeroTarjeta)
                 {
-                    Console.WriteLine("Cliente Encontrado");
                     Buscando.MostrarInformacion();
                     Encontrado = true;
 
@@ -108,7 +108,8 @@ namespace CardHolder
             }
             if (!Encontrado)
             {
-                Console.WriteLine("Cliente no encontrado...");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Tarjeta no encontrada."); Console.ResetColor();
             }
 
         }
