@@ -27,6 +27,13 @@ namespace CardHolder
             Console.WriteLine($"Nombre: {Nombre}");
             Console.WriteLine($"DPI: {DPI}");
             Console.WriteLine($"Numero de Cuenta: {NumeroCuenta}");
+            if( TarjetasCliente != null)
+            {
+                foreach(Tarjeta tarjeta in TarjetasCliente)
+                {
+                    tarjeta.MostrarInformacion();
+                }
+            }
 
         }
         public void AgregarTarejas(List<Tarjeta> tarjetas)
@@ -61,6 +68,16 @@ namespace CardHolder
                 Console.WriteLine("Usuario no encontrado."); Console.ResetColor();
                 return -1;
             }
+        }
+        public int BuscarCliente(List<Cliente> clientes, string dPI, bool esValidacion)
+        {
+            int indice = clientes.FindIndex(c => c.DPI == dPI);
+            if (indice != -1)
+            {
+                return indice;
+            }
+            return -1;
+            
         }
     }
 }

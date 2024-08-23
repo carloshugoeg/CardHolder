@@ -104,6 +104,7 @@ void MensajeNoHayTarjetas()
 }
 void AgregarCliente(List<Cliente> listaClientes)
 {
+    Cliente cliente = new Cliente("","","");
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine("------------------------");
@@ -113,21 +114,21 @@ void AgregarCliente(List<Cliente> listaClientes)
     Console.Write("Nombre: ");
     string nombreCliente = Console.ReadLine();
     string dpi;
+    int indice;
     do
     {
         Console.Write("Ingrese Número de DPI: ");
         dpi = Console.ReadLine();
+        indice = cliente.BuscarCliente(listaClientes,dpi, esValidacion: true);
         Int128 numeroValidacion;
-        if (Int128.TryParse(dpi, out numeroValidacion))
+        if (Int128.TryParse(dpi, out numeroValidacion) && indice == -1)
         {
             break;
         }
         else
-        {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("El DPI esta en formato incorrecto\n\n");
-            Console.ResetColor();
-        }
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("El DPI esta en formato incorrecto o ya existe\n\n");
+        Console.ResetColor();
     } while (true);
     string numeroCuenta;
     do

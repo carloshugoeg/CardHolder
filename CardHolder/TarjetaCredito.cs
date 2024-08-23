@@ -24,8 +24,13 @@ namespace CardHolder
         {
             base.MostrarInformacion();
             Console.WriteLine("\nTipo tarjeta: CREDITO");
+            Console.WriteLine("Credito Maximo: Q." + CreditoMaximo);
             Console.WriteLine("Interes: " + (Interes*100)+"%");
-            //aqui siguen
+            if (Deuda > 0)
+            {
+                Console.WriteLine($"Deuda : Q.{Deuda}"); 
+            }
+            Console.WriteLine("Saldo Utilizado: Q."+SaldoMensual);
         }
     }
 }
